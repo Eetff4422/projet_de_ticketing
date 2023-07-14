@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Details</title>
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/style.css">
+    <script src="../public/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <h2>Ticket Details</h2>
+    <p>Numéro de demande: {{ ticket.numeroDemande }}</p>
+    <p>Tipe de demande: {{ ticket.typeDemande }}</p>
+    <p>Priorité: {{ ticket.priorite }}</p>
+    <p>Sujet: {{ ticket.sujet }}</p>
+    <p>statut: {{ ticket.statut }}</p>
+    <p>Date: {{ ticket.date }}</p>
+
+    <h2>Discussion</h2>
+    {% for message in discussion %}
+        <p>{{ message.sender }}: {{ message.message }}</p>
+    {% endfor %}
+    {% if error is defined %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+    <form action="" method="POST">
+        <input type="hidden" name="ticketId" value="{{ ticket.id }}">
+        <input type="hidden" name="sender" value="admin"> <!-- Change this based on who is logged in -->
+        <textarea name="newMessage" required></textarea>
+        <button type="submit">Send</button>
+    </form>
+    <button class="back-button"><a href="ticket_management.php">Retour</a></button>
+</body>
+</html>

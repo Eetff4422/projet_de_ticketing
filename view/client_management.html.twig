@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestion des clients</title>
+  <link rel="stylesheet" href="../public/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../public/css/style.css">
+  <script src="../public/js/bootstrap.min.js"></script>
+</head>
+<body>
+  
+  <div class="container_accueil_admin">
+    <hr><br><h2>Gestion des clients</h2><br><hr><br>
+
+    {% if error is defined %}
+        <h4>{{ error }}</h4>
+    {% endif %}
+    <form action="" method="post">
+      <select name="client_choice">
+        <option value="select">Sélectionner</option>
+        <option value="client_list">Consulter la liste de clients</option>
+        <option value="client_modify">Modifier les informations d'un client</option>
+      </select>
+      <br><br>
+      <input type="submit" name="bout" value="Soumettre">
+    </form>
+    <br><br>
+    <button class="back-button"><a href="admin.php">Retour</a></button>
+  </div>
+</body>
+</html>

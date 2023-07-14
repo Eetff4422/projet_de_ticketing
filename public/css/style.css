@@ -1,0 +1,122 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: white;
+}
+
+.container{
+    width: 60%;
+    background-color: gray;
+    height: 500px;
+    margin: 20px auto;
+    border-radius: 10px;
+}
+
+::placeholder{
+    font-size: 12px;
+}
+
+h1{
+    color: ivory;
+    font-size: 22px;
+    padding: 10px;
+    border-bottom: 1px solid white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    letter-spacing: 3px;
+}
+.messages{
+    width: 90%;
+    background-color: rgb(228, 228, 62);
+    height: 250px;
+    margin: 10px auto;
+    overflow: auto;
+}
+
+.message{
+    list-style: none;
+    padding: 8px;
+    border-bottom: 1px solid silver;
+}
+
+.formulaire{
+    width: 90%;
+    margin: 10px auto;
+}
+.fc{
+    padding: 60px;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.container_accueil_admin{
+    padding: 70px;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container_accueil_admin table{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logout-button{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.logout-button a {
+    color: inherit;
+    text-decoration: none; 
+}
+
+.back-button a{
+    color: inherit;
+    text-decoration: none; 
+}
+input{
+    width: 40%;
+    height: 25px;
+    padding: 3px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 5px;
+    font-style: italic;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+input[type=submit]{
+    width: 40%;
+    height: 30px;
+    background-color: rgb(28, 28, 235);
+    color:#ddd;
+    
+}
+
+input[type=submit]:hover{
+    background-color: rgb(38, 38, 255);
+}
+
+

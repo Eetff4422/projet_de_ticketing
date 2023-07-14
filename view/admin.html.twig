@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil </title>
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/style.css">
+    <script src="../public/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container_accueil_admin">
+        <form action="" method="post">
+        <button class="logout-button"><a href="deconnexion.php">Déconnexion</a></button>
+            {% if erreur is not empty %}<h4>{{ erreur }}</h4>{% endif %}<br>
+            <input type="radio" id="ticket" name="choice" value="ticket">
+            <label for="ticket">Gestion des tickets</label><br>
+
+            <input type="radio" id="client" name="choice" value="client">
+            <label for="client">Gestion des clients</label>
+            <br><br>
+            <input type="submit" name="bout" value="Valider">
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes informations</title>
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/style.css">
+    <script src="../public/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container_accueil_admin">
+    <hr><br><h2>Mes informations</h2><br><hr><br>
+
+    {% if client is not empty %}
+        <table>
+            <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Mail</th>
+                <th>Telephone</th> 
+            </tr>
+            
+            <tr>
+                <td>{{ client[0].nom }}</td>
+                <td>{{ client[0].prenom }}</td>
+                <td>{{ client[0].mail }}</td>
+                <td>{{ client[0].telephone }}</td> 
+            </tr>
+            
+        </table>
+    {% else %}
+        <p>Aucune information trouvée.</p>
+    {% endif %}
+
+    <br><br>
+        <button class="back-button"><a href="user.php">Retour</a></button>
+    </div>
+</body>
+</html>

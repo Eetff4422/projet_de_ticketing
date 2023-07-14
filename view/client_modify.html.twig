@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier</title>
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/style.css">
+    <script src="../public/js/bootstrap.min.js"></script>
+</head>
+<body>
+<script>
+    // Attendez 3 secondes, puis déclenchez le clic sur le lien
+    setTimeout(function() {
+        document.getElementById('redirect-link').click();
+    }, 3000);
+</script>
+
+    {% if clients is not empty or client is not empty or message is not empty %}
+        {% if client is defined or message is defined %}
+            {% if message %}
+                <p>{{ message }}</p>
+                <a id="redirect-link" href="client_management.php" style="display: none;"></a>
+            {% else %}
+                <div class='container_accueil_admin'>
+                    <form action='client_modify.php' method='post'>
+                        <input type='hidden' name='id' value='{{ client.id }}'>
+                        <input type='hidden' name='idUser' value='{{ client.idUser }}'>
+                        Nom: <input type='text' name='nom' value='{{ client.nom }}'><br>
+                        Prénom: <input type='text' name='prenom' value='{{ client.prenom }}'><br>
+                        mail: <input type='text' name='mail' value='{{ client.mail }}'><br>
+                        Téléphone: <input type='text' name='telephone' value='{{ client.telephone }}'><br>
+                        <input type="hidden" name="form_type" value="update">
+                        <input type='submit' name='bout' value='Modifier'>
+                    </form><br>
+                    <button class="back-button"><a href="client_management.php">Annuler</a></button>
+
+                </div>
+            {% endif %}
+        {% else %}
+            <div class='container_accueil_admin'>
+                <form action="client_modify.php" method="post">
+                    <label for="modify"></label><br>
+                    <select id="modify" name="modify">
+                        {% for client in clients %}
+                            <option value="{{ client.nom }}">{{ client.nom }}</option>
+                        {% endfor %}
+                    </select><br>
+                    <button class="back-button"><a href="client_management.php">Annuler</a></button><br><br>
+                    <input type="hidden" name="form_type" value="choose">
+                    <input type="submit" name="bout" value="Modifier">
+                </form>
+            </div>
+        {% endif %}
+    {% else %}
+        <p>Erreur : Il n'y a pas de clients à afficher. Veuillez contacter votre administrateur.</p>
+    {% endif %}
+
+</body>
+</html>
+
+

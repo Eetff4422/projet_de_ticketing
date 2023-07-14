@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des clients</title>
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/style.css">
+    <script src="../public/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container_accueil_admin">
+    <hr><br><h2>Liste des clients</h2><br><hr><br>
+
+    <form action="" method="GET">
+        <input type="text" name="search" placeholder="Rechercher">
+        <input type="hidden" name="sort" value="1">
+        <input type="submit" value="Rechercher">
+        <input type="submit" value="Trier par nom">
+        <button type="button" id="clearButton">Effacer les filtres</button>
+    </form>
+
+    <script>
+    document.getElementById('clearButton').addEventListener('click', function() {
+        window.location.href = window.location.pathname + "?clear_filters=true";
+    });
+    </script>
+    
+    {% if clients is not empty %}
+        <table>
+            <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Mail</th>
+                <th>Telephone</th> 
+            </tr>
+            {% for client in clients %}
+                <tr>
+                    <td>{{ client.nom }}</td>
+                    <td>{{ client.prenom }}</td>
+                    <td>{{ client.mail }}</td>
+                    <td>{{ client.telephone }}</td> 
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>Aucun client trouvé.</p>
+    {% endif %}
+    <br><br>
+        <button class="back-button"><a href="client_management.php">Retour</a></button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gérer les tickets</title>
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/style.css">
+    <script src="../public/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div class="container_accueil_admin">
+    <hr><br><h2>Gérer les tickets</h2><br><hr><br>
+
+    <form action="" method="GET">
+        <input type="text" name="search" placeholder="Rechercher">
+        <input type="hidden" name="sort" value="1">
+        <input type="submit" value="Rechercher">
+        <input type="submit" value="Trier par date">
+        <button type="button" id="clearButton">Effacer les filtres</button>
+    </form>
+
+    <script>
+    document.getElementById('clearButton').addEventListener('click', function() {
+        window.location.href = window.location.pathname + "?clear_filters=true";
+    });
+    </script>
+
+    {% if error is defined %}
+        <h4>{{ error }}</h4>
+    {% endif %}
+    
+    {% if tickets is not empty %}
+        
+           <table>
+                <tr>
+                    <th>Numéro de Demande</th>
+                    <th>Type de Demande</th>
+                    <th>Priorité</th>
+                    <th>Sujet</th>
+                    <th>Message</th>
+                    <th>Statut</th>
+                    <th>Date</th>
+                </tr>
+                {% for ticket in tickets %}
+                    <tr>
+                        <td>{{ ticket.numeroDemande }}</td>
+                        <td>{{ ticket.typeDemande }}</td>
+                        <td>{{ ticket.priorite }}</td>
+                        <td>{{ ticket.sujet }}</td>
+                        <td>{{ ticket.message }}</td>
+                        <td>{{ ticket.statut }}</td>
+                        <td>{{ ticket.date }}</td>
+                        <td>
+                            <form action="ticket.php" method="POST">
+                                <input type="hidden" name="ticketId" value="{{ ticket.id }}">
+                                <input type="submit" value="Ouvrir">
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+
+        
+    {% else %}
+        <p>Aucun ticket trouvé.</p>
+    {% endif %}<br><br>
+
+    {% if user == 'admin' %}
+        <button class="back-button"><a href="admin.php">Retour</a></button>
+    {% elseif user == 'client' %}
+        <button class="back-button"><a href="user.php">Retour</a></button>
+    {% endif %}
+    
+        
+    </div>
+</body>
+</html>
