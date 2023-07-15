@@ -16,6 +16,23 @@
     <p>Sujet: {{ ticket.sujet }}</p>
     <p>statut: {{ ticket.statut }}</p>
     <p>Date: {{ ticket.date }}</p>
+  
+    <!-- Show "Close Ticket" button to admin if ticket is open -->
+    {% if user_type == 'admin' and ticket.statut == 'Ouvert' %}
+        <form action="close_ticket.php" method="post">
+            <input type="hidden" name="ticketId" value="{{ ticket.id }}">
+            <button type="submit">Fermer le ticket</button>
+        </form>
+    {% endif %}
+
+    <!-- Show "Reopen Ticket" button to client if ticket is closed -->
+    {% if user_type == 'client' and ticket.statut == 'Fermé' %}
+        <form action="reopen_ticket.php" method="post">
+            <input type="hidden" name="ticketId" value="{{ ticket.id }}">
+            <button type="submit">Rouvrir le ticket</button>
+        </form>
+    {% endif %}
+
 
     <h2>Discussion</h2>
     {% for message in discussion %}

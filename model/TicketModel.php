@@ -190,6 +190,19 @@ class TicketModel {
         $stmt->bindValue(':message', $message);
         $stmt->execute();
     }
+    public function closeTicket($ticketId) {
+        $sql = "UPDATE tickets SET statut = 'Fermé' WHERE id = :ticketId";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':ticketId', $ticketId);
+        return $stmt->execute();
+    }
+
+    public function reopenTicket($ticketId) {
+        $sql = "UPDATE tickets SET statut = 'Ouvert' WHERE id = :ticketId";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':ticketId', $ticketId);
+        return $stmt->execute();
+    }
     
 }
 ?>

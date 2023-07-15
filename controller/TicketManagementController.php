@@ -55,11 +55,12 @@ class TicketManagementController {
         echo $this->twig->render('ticket_management.html.twig', ['erreur' => $erreur]);
     }
 
-    public function showTicketDetails($ticketId, $error = null) {
+    public function showTicketDetails($ticketId, $user, $error = null) {
         $ticket = $this->ticketModel->getById($ticketId);
         $discussion = $this->ticketModel->getDiscussion($ticketId);
-        echo $this->twig->render('ticket_detail.html.twig', ['ticket' => $ticket, 'discussion' => $discussion, 'error' => $error]);
+        echo $this->twig->render('ticket_detail.html.twig', ['ticket' => $ticket, 'discussion' => $discussion, 'user_type' => $user, 'error' => $error]);
     }
+    
     
 
     public function handleDiscussionForm($user) {
@@ -67,10 +68,27 @@ class TicketManagementController {
             // Determine the sender based on the current session
             $sender = $user == 'admin' ? 'admin' : 'client';
             $this->ticketModel->addMessageToDiscussion($_POST['ticketId'], $sender, $_POST['newMessage']);
-            $this->showTicketDetails($_POST['ticketId']);
+            $this->showTicketDetails($_POST['ticketId'], $user);
         } else {
-            $this->showTicketDetails($_POST['ticketId'], "Veuillez entrer un message.");
+            $this->showTicketDetails($_POST['ticketId'], $user, "Veuillez entrer un message.");
         }
     }
+    public function closeTicket($ticketId) {
+        $result = $this->ticketModel->closeTicket($ticketId);
+        if ($result) {
+            echo "Ticket closed successfully.";
+        } else {
+            echo "Failed to close the ticket.";
+        }
+    }
+    public function reopenTicket($ticketId) {
+        $result = $this->ticketModel->reopenTicket($ticketId);
+        if ($result) {
+            echo "Ticket reopened successfully.";
+        } else {
+            echo "Failed to reopen the ticket.";
+        }
+    }
+    
 
 }

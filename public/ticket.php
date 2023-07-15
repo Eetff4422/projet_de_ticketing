@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else if (isset($_POST['ticketId'])) {
         // Handle the ticket details form submission
         $ticketId = $_POST['ticketId'];
-        $controller->showTicketDetails($ticketId, $error = null);
+        $controller->showTicketDetails($ticketId,$user);
     }
 }
 

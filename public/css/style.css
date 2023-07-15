@@ -2,25 +2,39 @@
     margin: 0;
     padding: 0;
 }
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+body {
+    font-family: Arial, sans-serif;
     margin: 0;
+    padding: 0;
     background-color: white;
 }
 
-.container{
-    width: 60%;
-    background-color: gray;
-    height: 500px;
-    margin: 20px auto;
-    border-radius: 10px;
+.container {
+    width: 80%;
+    margin: auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
 }
 
 ::placeholder{
     font-size: 12px;
+}
+h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+p {
+    color: #666;
+    line-height: 1.6;
+}
+textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
 }
 
 h1{
@@ -38,7 +52,17 @@ h1{
     margin: 10px auto;
     overflow: auto;
 }
-
+button {
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #0056b3;
+}
 .message{
     list-style: none;
     padding: 8px;
@@ -60,26 +84,45 @@ h1{
     text-align: center;
 }
 
-.container_accueil_admin{
-    padding: 70px;
-    background-color: whitesmoke;
-    display: flex;
-    flex-direction: column;
-    width: 30%;
+.container_accueil_admin {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    text-align: center;
-    position: relative;
+    background-color: #f9f9f9;
+}
+.container_accueil_admin form {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.container_accueil_admin form input[type="text"],
+.container_accueil_admin form input[type="submit"] {
+    flex: 1 0 auto;
+    margin: 10px;
 }
 
-.container_accueil_admin table{
-    margin-left: auto;
-    margin-right: auto;
+.container_accueil_admin table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+.container_accueil_admin th, .container_accueil_admin td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
 }
 
+.container_accueil_admin th {
+    background-color: #f2f2f2;
+}
+
+.container_accueil_admin td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 .logout-button{
     position: absolute;
     top: 0;
@@ -90,7 +133,22 @@ h1{
     color: inherit;
     text-decoration: none; 
 }
-
+.back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #007bff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+.back-button:hover {
+    background-color: #0056b3;
+}
+.error {
+    color: red;
+    margin-bottom: 10px;
+}
 .back-button a{
     color: inherit;
     text-decoration: none; 
@@ -106,7 +164,9 @@ input{
     font-style: italic;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-
+button a {
+    color: white;
+}
 input[type=submit]{
     width: 40%;
     height: 30px;
